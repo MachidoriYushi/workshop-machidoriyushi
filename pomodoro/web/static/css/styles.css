@@ -1,0 +1,236 @@
+:root {
+  --background: #7065c7;
+  --surface: #f9f8ff;
+  --panel: #ececfd;
+  --accent: #747cf0;
+  --accent-strong: #6655c6;
+  --muted: #777783;
+  --ring-track: #ebeef5;
+  --text: #303039;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--background);
+  color: var(--text);
+  font-family: "Trebuchet MS", "Hiragino Sans", "Yu Gothic", sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+}
+
+.timer-card {
+  width: min(400px, 100%);
+  min-height: 600px;
+  padding: 32px 30px;
+  background: var(--surface);
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgb(42 34 104 / 24%);
+}
+
+.timer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.timer-header h1 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.window-controls {
+  display: flex;
+  gap: 24px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.status-label {
+  margin: 48px 0 22px;
+  color: var(--muted);
+  font-size: 18px;
+  text-align: center;
+}
+
+.progress-ring {
+  --progress: 0%;
+  width: 180px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: conic-gradient(var(--accent) var(--progress), var(--ring-track) 0);
+}
+
+.progress-ring::before {
+  content: "";
+  grid-area: 1 / 1;
+  width: 78%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--surface);
+}
+
+.timer-display {
+  grid-area: 1 / 1;
+  z-index: 1;
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.timer-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 30px 0 24px;
+}
+
+.primary-button,
+.secondary-button {
+  min-width: 96px;
+  min-height: 52px;
+  padding: 0 22px;
+  border-radius: 999px;
+  border: 2px solid var(--accent);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #fff;
+}
+
+.secondary-button {
+  background: transparent;
+  color: var(--accent);
+}
+
+.secondary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.notification-panel {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px 16px;
+  margin: 0 0 28px;
+}
+
+.text-button {
+  min-height: 40px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent-strong);
+  cursor: pointer;
+  font-weight: 700;
+  text-align: left;
+}
+
+.sound-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.sound-toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+
+.notification-panel p {
+  grid-column: 1 / -1;
+  min-height: 18px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stats-panel {
+  padding: 22px 20px;
+  background: var(--panel);
+  border-radius: 12px;
+}
+
+.stats-panel h2 {
+  margin: 0 0 20px;
+  font-size: 16px;
+}
+
+.stats-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 0;
+  text-align: center;
+}
+
+.stats-list div {
+  min-width: 0;
+}
+
+.stats-list dt {
+  color: var(--accent);
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.stats-list dd {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 480px) {
+  .app-shell {
+    padding: 18px;
+  }
+
+  .timer-card {
+    min-height: auto;
+    padding: 26px 22px;
+  }
+
+  .window-controls {
+    gap: 14px;
+  }
+
+  .progress-ring {
+    width: min(180px, 62vw);
+  }
+
+  .timer-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .notification-panel {
+    grid-template-columns: 1fr;
+  }
+}
