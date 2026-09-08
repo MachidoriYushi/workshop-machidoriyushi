@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "none",
+    "strict": true,
+    "noImplicitReturns": true,
+    "outFile": "web/static/js/timer.js"
+  },
+  "include": ["web/static/ts/timer.ts"]
+}
