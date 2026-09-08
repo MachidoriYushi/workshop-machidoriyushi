@@ -1,9 +1,0 @@
-{
-  "scripts": {
-    "build": "tsc",
-    "test": "npm run build && node --test web/static/js/*.test.js web/static/css/*.test.js"
-  },
-  "devDependencies": {
-    "typescript": "^5.9.2"
-  }
-}
